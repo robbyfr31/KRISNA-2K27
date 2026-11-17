@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="KRISNA 2K27 — pusat informasi, pendaftaran, juklak, juknis, dan kontak panitia.">
+  <title>KRISNA 2K27 — Informasi & Pendaftaran</title>
+  <style>
+    :root {
+      --night: #11150f;
+      --night-soft: #20291c;
+      --gold: #c9a45d;
+      --gold-light: #f0dba1;
+      --orange: #c98543;
+      --cream: #f4ead0;
+      --ink: #201d20;
+      --muted: #c7c3ba;
+      --line: rgba(240,219,161,.3);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+      color: var(--cream);
+      background:
+        radial-gradient(ellipse at 50% 8%, rgba(181, 151, 81, .18), transparent 42%),
+        radial-gradient(ellipse at 8% 45%, rgba(96, 116, 70, .2), transparent 42%),
+        radial-gradient(ellipse at 92% 68%, rgba(141, 101, 46, .14), transparent 40%),
+        linear-gradient(180deg, #10170f 0%, #20271b 36%, #302a1d 70%, #11160f 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .23;
+      background:
+        radial-gradient(circle at 50% 18%, transparent 0 115px, rgba(218,184,107,.22) 116px 117px, transparent 118px),
+        radial-gradient(circle at 50% 18%, transparent 0 137px, rgba(218,184,107,.1) 138px 139px, transparent 140px),
+        radial-gradient(#f3dba2 1px, transparent 1.5px);
+      background-size: auto, auto, 41px 47px;
+      mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+    }
+    body::after {
+      content: "❧";
+      position: fixed;
+      z-index: 0;
+      top: 17%;
+      left: -40px;
+      pointer-events: none;
+      color: rgba(220, 186, 112, .13);
+      font-size: 230px;
+      line-height: 1;
+      transform: rotate(-24deg);
+      text-shadow: 0 0 1px rgba(240,219,161,.15);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .page { position: relative; z-index: 1; width: min(100%, 560px); min-height: 100vh; margin: 0 auto; padding: 24px 20px 36px; }
+    .page::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 8px 7px 8px;
+      border: 1px solid rgba(219, 185, 111, .14);
+      border-radius: 180px 180px 24px 24px;
+      pointer-events: none;
+    }
+    .topline { display:flex; justify-content:space-between; align-items:center; color:#c9c4b7; font: 700 10px/1.3 Arial,sans-serif; letter-spacing:2px; text-transform:uppercase; }
+    .topline span:last-child { color:var(--gold-light); }
+    .hero { text-align:center; padding-top: 24px; }
+    .logo-wrap { width: min(76%, 320px); margin: 0 auto; filter: drop-shadow(0 12px 22px rgba(0,0,0,.35)); }
+    .logo-wrap img { width:100%; height:auto; display:block; object-fit:contain; }
+    .subtitle { margin: 4px auto 0; max-width: 360px; color: #d8c99e; font: italic 14px/1.5 Georgia,serif; letter-spacing:.4px; }
+    .year { color: var(--gold-light); font-size: clamp(35px, 10vw, 50px); line-height:1; font-weight:bold; margin: 12px 0 22px; text-shadow: 0 3px 12px #0008; letter-spacing: 3px; }
+    .section-title { margin: 21px 0 12px; color:#fff2d0; font-size:19px; line-height:1.2; letter-spacing:1.8px; text-align:center; text-shadow:0 2px 4px #000; }
+    .section-title::before, .section-title::after { content:"✦"; color:var(--gold); font-size:12px; margin:0 9px; vertical-align:3px; }
+    .section-title small { display:block; font: 700 10px/1.5 Arial,sans-serif; color:#d3c59d; letter-spacing:2px; margin-top:4px; }
+    .button-stack { display:grid; gap:9px; width:100%; }
+    .event-btn {
+      display:flex; justify-content:center; align-items:center; text-align:center;
+      min-height:47px; padding:10px 14px; border-radius:13px;
+      border:1px solid rgba(255,255,255,.2);
+      box-shadow: 0 5px 0 rgba(0,0,0,.28), 0 9px 18px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.32);
+      color:#fff7e5; font-size:16px; line-height:1.08; font-weight:bold;
+      letter-spacing:2px; text-transform:uppercase; transition:transform .16s ease, filter .16s ease;
+      background:linear-gradient(180deg,#e4b66a 0%,#b97a3b 52%,#79502b 100%);
+    }
+    .event-btn:hover { transform:translateY(-2px); filter:brightness(1.08); }
+    .event-btn:active { transform:translateY(2px); box-shadow:0 2px 0 rgba(0,0,0,.3); }
+    .event-btn.gold { color:#292313; background:linear-gradient(180deg,#f5dfa0 0%,#d0b16a 52%,#9e7b3e 100%); border-color:#f8e0a0; text-shadow:0 1px rgba(255,255,255,.35); }
+    .event-btn.navy { background:linear-gradient(180deg,#5a6248 0%,#35412c 50%,#1a2519 100%); border-color:#7d8059; }
+    .event-btn.small { min-height:43px; font-size:14px; letter-spacing:1.7px; }
+    .event-btn[aria-disabled="true"] { opacity:.7; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .mascot { width:min(46%, 170px); margin: 30px auto 0; opacity:.96; filter:drop-shadow(0 8px 18px #0006); }
+    .mascot img { display:block; width:100%; height:auto; }
+    .footer { text-align:center; color:#b9b2a0; font:10px/1.7 Arial,sans-serif; letter-spacing:.5px; margin-top:24px; }
+    .footer strong { color:var(--gold-light); }
+    .modal { display:none; position:fixed; inset:0; z-index:10; background:rgba(4,6,12,.78); padding:18px; align-items:center; justify-content:center; }
+    .modal.open { display:flex; }
+    .modal-box { width:min(100%,430px); max-height:90vh; overflow:auto; background:#202637; border:1px solid var(--line); border-radius:18px; padding:23px; box-shadow:0 24px 80px #0008; }
+    .modal-head { display:flex; justify-content:space-between; align-items:start; gap:15px; margin-bottom:15px; }
+    .modal-head h2 { color:var(--gold-light); font-size:22px; letter-spacing:1px; }
+    .close { border:0; background:#343c4e; color:white; width:32px; height:32px; border-radius:9px; font-size:20px; }
+    .modal-box p { color:#e0dacb; font:14px/1.6 Arial,sans-serif; }
+    .modal-box form { display:grid; gap:12px; margin-top:14px; }
+    .modal-box label { font:700 12px Arial,sans-serif; color:#f3e5bf; }
+    .modal-box input, .modal-box select, .modal-box textarea { width:100%; margin-top:5px; border:1px solid #555d6f; background:#151b29; color:white; border-radius:9px; padding:12px; font:14px Arial,sans-serif; }
+    .modal-box .event-btn { width:100%; border:0; }
+    .note { margin-top:12px; font:11px/1.5 Arial,sans-serif!important; color:#bdb8ad!important; }
+    .status { color:#b9f1d0!important; margin-top:12px; }
+    @media(min-width:700px) {
+      .page { padding-top:32px; }
+      .hero { padding-top:30px; }
+      .logo-wrap { width:260px; }
+      .year { margin-bottom:25px; }
+      .event-btn { min-height:50px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline"><span>Informasi &amp; Pendaftaran</span><span>KRISNA • 2K27</span></div>
+
+    <header class="hero">
+      <div class="logo-wrap">
+        <img src="assets/krisna-logo.png" alt="Logo KRISNA">
+      </div>
+      <p class="subtitle">Pusat Informasi, Pendaftaran, dan Dokumen Kegiatan</p>
+      <div class="year">2K27</div>
+    </header>
+
+    <section aria-labelledby="pendaftaran-title">
+      <h2 class="section-title" id="pendaftaran-title">PENDAFTARAN<small>PILIH KATEGORI LOMBA</small></h2>
+      <div class="button-stack">
+        <a class="event-btn" href="https://forms.gle/WhnHviuEcjwR6mWU7" target="_blank" rel="noopener noreferrer">MADYA</a>
+        <a class="event-btn" href="https://forms.gle/SHDNdZ9wDPRX53zs6" target="_blank" rel="noopener noreferrer">WIRA</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="cp-title">
+      <h2 class="section-title" id="cp-title">CONTACT PERSON</h2>
+      <div class="button-stack">
+        <a class="event-btn gold" href="https://wa.me/6281918341071" target="_blank" rel="noopener noreferrer">CP MADYA — HUMAM</a>
+        <a class="event-btn gold" href="https://wa.me/6281572892050" target="_blank" rel="noopener noreferrer">CP WIRA — YUSUF</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="info-title">
+      <h2 class="section-title" id="info-title">MORE INFORMATION</h2>
+      <div class="button-stack">
+        <a class="event-btn navy small" href="https://wa.me/6282364385508" target="_blank" rel="noopener noreferrer">CP JUKLAK &amp; JUKNIS — TATA</a>
+        <a class="event-btn navy small" href="https://wa.me/6285755395795" target="_blank" rel="noopener noreferrer">CP ADMIN — MIRZAD</a>
+      </div>
+    </section>
+
+    <section aria-label="Dokumen kegiatan">
+      <h2 class="section-title">DOKUMEN KEGIATAN</h2>
+      <div class="button-stack">
+        <a class="event-btn" href="assets/pamflet-krisna.jpeg" target="_blank" rel="noopener noreferrer">PAMFLET KRISNA</a>
+        <a class="event-btn gold" href="#" data-link="suratRekomSekolah">SURAT REKOMENDASI SEKOLAH — MENYUSUL</a>
+        <a class="event-btn navy small" href="#" data-link="suratRekomPMI">SURAT REKOMENDASI PMI — MENYUSUL</a>
+      </div>
+    </section>
+
+    <div class="mascot"><img src="assets/krisna-mascot.png" alt="Maskot KRISNA"></div>
+    <footer class="footer"><strong>KRISNA 2K27</strong><br>Informasi resmi kegiatan akan diperbarui oleh panitia.<br>Pastikan semua tautan dan dokumen telah diverifikasi sebelum dipublikasikan.</footer>
+  </main>
+
+  <script>
+    // Surat rekomendasi sekolah dan PMI akan ditambahkan setelah dokumen resmi diterima.
+    const LINKS = {
+      suratRekomSekolah: "",
+      suratRekomPMI: ""
+    };
+
+    document.querySelectorAll("[data-link]").forEach(link => {
+      const key = link.dataset.link;
+      if (LINKS[key]) {
+        link.href = LINKS[key];
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      } else {
+        link.href = "#";
+        link.addEventListener("click", event => {
+          event.preventDefault();
+          alert("Dokumen " + link.textContent.trim() + " belum tersedia. Tautan akan ditambahkan setelah dokumen resmi diterima.");
+        });
+      }
+    });
+
+    // Pendaftaran menggunakan Google Forms resmi untuk tiap kategori.
+    // Tautan dokumen dan kontak panitia bisa ditambahkan kemudian pada objek LINKS di atas.
+  </script>
+</body>
+</html>
